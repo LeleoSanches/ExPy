@@ -1,0 +1,58 @@
+%% AMS-LaTeX Created with the Wolfram Language : www.wolfram.com
+
+\documentclass{article}
+\usepackage{amsmath, amssymb, graphics, setspace}
+
+\newcommand{\mathsym}[1]{{}}
+\newcommand{\unicode}[1]{{}}
+
+\newcounter{mathematicapage}
+\begin{document}
+
+\begin{small}
+
+
+
+
+
+\begin{doublespace}
+\noindent\(\pmb{\text{data}=\text{Import}[\text{{``}C:1090.dat{''}}];}\\
+\pmb{\text{RC}=\text{Table}[\{\text{data}[[i,1]],\text{data}[[i,3]]\},\{i,1,24\}];}\\
+\pmb{\text{Rgas}=\text{Table}[\{\text{data}[[i,1]],\text{data}[[i,4]]\},\{i,1,24\}];}\\
+\pmb{\text{Erro}=\text{Table}[\text{data}[[i,5]],\{i,1,24\}];}\\
+\pmb{\text{TableForm}[\text{data},\text{TableHeadings}\to \{\{\text{{``}NGC 1090{''}}\},\{\text{{``}Raio{''}},\text{{``}{''}},\text{{``}Vtotal{''}},\text{{``}Vgas{''}},\text{{``}Erro{''}}\}\}];}\\
+\pmb{\text{Vgas} = \text{Interpolation}[\text{Rgas}]}\\
+\pmb{\text{Vd}[\text{r$\_$}, \text{M$\_$}] \text{:=} ((G*(10{}^{\wedge}9*M)*(r/\text{Rd}){}^{\wedge}2)*(\text{BesselI}[0, r/(2*\text{Rd})]*\text{BesselK}[0,
+r/(2*\text{Rd})] - }\\
+\pmb{\text{BesselI}[1, r/(2*\text{Rd})]*\text{BesselK}[1, r/(2*\text{Rd})]))/(2*\text{Rd}); }\\
+\pmb{\text{Vme}[\text{r$\_$}, \text{R$\_$}, \text{P$\_$}] \text{:=} (6.4*G*((P*10{}^{\wedge}7)*R{}^{\wedge}3)*((1/2)*\text{Log}[(r/R){}^{\wedge}2
++ 1] + \text{Log}[r/R + 1] - }\\
+\pmb{\text{ArcTan}[r/R]))/r; }\\
+\pmb{G \text{:=} 4.302/10{}^{\wedge}6; }\\
+\pmb{\text{Rd} \text{:=} 3.4; }\\
+\pmb{\text{Vt}[\text{r$\_$}, \text{M$\_$}, \text{R$\_$}, \text{P$\_$}] \text{:=} \text{Sqrt}[\text{Vd}[r, M] + \text{Vme}[r, R, P] + \text{Vgas}[r]{}^{\wedge}2]}\\
+\pmb{\text{Ajuste}= \text{NonlinearModelFit}[\text{RC},\text{Vt}[r,M,R,P],\{\{R,1,50\},\{P,1,10\},\{M,1,50\}\},r,}\\
+\pmb{\quad \text{Weights}\to 1/\text{Erro}{}^{\wedge}2]}\\
+\pmb{\text{Ajuste}[\text{{``}ParameterTable{''}}]}\\
+\pmb{\text{Needs}[\text{{``}ErrorBarPlots$\grave{ }${''}}]}\\
+\pmb{\text{Gas} =\text{Plot}[\text{Igas}[\unicode{f817}],\{\unicode{f817},\text{{``}0.27931{''}},29.2\},\text{PlotStyle}\to \{\text{Black},\text{Dashed}\},}\\
+\pmb{\quad \text{AxesLabel}\to \{\text{{``}R (Kpc){''}},\text{{``}V (Km/s){''}}\}];}\\
+\pmb{\text{Vstars} = \text{Plot}[\text{Sqrt}[\text{Vd}[r,M]]\text{/.}M\to 36.5,\{r,0,29.4\}, \text{PlotStyle}\to \{\text{Black},\text{Dotted}\}];}\\
+\pmb{\text{Vhalo} = \text{Plot}[\text{Sqrt}[\text{Vme}[r,R,P]]\text{/.}\{R\to 7.8,P\to 2.3\},\{r,0,29.4\},}\\
+\pmb{\quad \text{PlotStyle}\to \{\text{Black},\text{DotDashed}\}];}\\
+\pmb{\text{VRC} = \text{ErrorListPlot}[\{\text{Table}[\{\text{RC}[[i]],\text{ErrorBar}[\text{Erro}[[i]]]\},\{i,24\}]\},\text{PlotStyle}\to \text{Black},}\\
+\pmb{\quad \text{MeshStyle}\to \text{PointSize}[\text{Large}]];}\\
+\pmb{\text{RCtotal} = \text{Plot}[\text{Vt}[r,M,R,P]\text{/.}\{M\to 36.5,R\to 7.8,P\to 2.3\},\{r,0,29.4\},\text{PlotStyle}\to \text{Black},}\\
+\pmb{\quad \text{PlotRange}\to \{\{0,30\},\{0,190\}\}];}\\
+\pmb{\text{Show}[\text{RCtotal},\text{VRC},\text{Vstars},\text{Vhalo},\text{Gas}, \text{Frame}\to \text{True},\text{PlotRange}\to \{\{0,30\},\{0,190\}\},}\\
+\pmb{\quad \text{PlotLabel}\to \text{{``}NGC 1090{''}},\text{FrameLabel}\to \{\text{{``}R(Kpc){''}},\text{{``}V(Km/s){''}}\}];}\\
+\pmb{\text{ErrorListPlot}[\{\text{Table}[\{\text{Table}[\{\text{data}[[i,1]],\text{Ajuste}[\text{{``}FitResiduals{''}}][[i]]\},\{i,26\}][[i]],}\\
+\pmb{\text{ErrorBar}[\text{Erro}[[i]]]\},\{i,24\}]\}, \text{PlotStyle}\to \text{Black}, \text{MeshStyle}\to \text{PointSize}[\text{Large}],}\\
+\pmb{\text{$\quad \quad $ }\text{PlotRange}\to \{-40,20\},\text{Frame}\to \text{True}, \text{AspectRatio}\to 0.2];}\)
+\end{doublespace}
+
+\end{small}
+
+\pmb{Teste}
+ Teste
+\end{document}
